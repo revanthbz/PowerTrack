@@ -1,0 +1,42 @@
+{
+    "version": 1,
+    "author": "Vattikula Revanth kumar",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 52.84, "attrs": {} },
+      {
+        "type": "wokwi-led",
+        "id": "led1",
+        "top": -166.8,
+        "left": -15.4,
+        "attrs": { "color": "red" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": -91.2,
+        "left": -19.75,
+        "rotate": 90,
+        "attrs": { "value": "220" }
+      },
+      {
+        "type": "wokwi-photoresistor-sensor",
+        "id": "ldr1",
+        "top": -96.3,
+        "left": -130.3,
+        "rotate": 90,
+        "attrs": {}
+      }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "ldr1:VCC", "esp:3V3", "red", [ "v0" ] ],
+      [ "ldr1:GND", "esp:GND.1", "black", [ "v0" ] ],
+      [ "esp:GND.1", "led1:C", "black", [ "h0" ] ],
+      [ "r1:1", "led1:A", "green", [ "h0", "v-9.6" ] ],
+      [ "r1:2", "esp:27", "green", [ "h19.2", "v171.6" ] ],
+      [ "ldr1:AO", "esp:D2", "green", [ "v0" ] ]
+    ],
+    "dependencies": {}
+  }
